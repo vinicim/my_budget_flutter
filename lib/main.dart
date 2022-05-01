@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_budget_flutter/model/transaction.dart';
+import 'package:intl/intl.dart';
 
 void main(List<String> args) {
   runApp(BudgetApp());
@@ -29,7 +30,6 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('Orçamento Pessoal')),
       body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Container(
@@ -54,7 +54,7 @@ class HomePage extends StatelessWidget {
                               ),
                               padding: EdgeInsets.all(10),
                               child: Text(
-                                'R\$ ${tr.value.toString()}',
+                                'R\$ ${tr.value.toStringAsFixed(2)}',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20,
@@ -72,14 +72,32 @@ class HomePage extends StatelessWidget {
                                       fontSize: 16),
                                 ),
                                 Text(
-                                  tr.date.toString(),
+                                  DateFormat('d MMM yy').format(tr.date),
                                   style: TextStyle(color: Colors.grey),
                                 ),
                               ],
                             )
                           ],
                         )))
-                    .toList())
+                    .toList()),
+            Card(
+              elevation: 5,
+              child: Padding(
+                padding: EdgeInsets.all(8),
+                child: Column(
+                  children: [
+                    TextField(decoration: InputDecoration(labelText: 'Título')),
+                    TextField(
+                        decoration: InputDecoration(labelText: 'Valor (R\$)')),
+                    TextButton(
+                        style: TextButton.styleFrom(primary: Colors.purple),
+                        onPressed: () {},
+                        child: Text('Nova Transação',
+                            style: TextStyle(fontSize: 16)))
+                  ],
+                ),
+              ),
+            )
           ]),
     );
   }
