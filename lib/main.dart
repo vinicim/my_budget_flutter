@@ -1,7 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:my_budget_flutter/components/transaction_form.dart';
+import 'package:my_budget_flutter/components/transaction_list.dart';
+import 'package:my_budget_flutter/components/transaction_user.dart';
 import 'package:my_budget_flutter/model/transaction.dart';
-import 'package:intl/intl.dart';
 
 void main(List<String> args) {
   runApp(BudgetApp());
@@ -15,16 +16,6 @@ class BudgetApp extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
-  final _transactions = [
-    Transaction(
-        id: 't1',
-        title: 'Tênis de corrida',
-        value: 320.5,
-        date: DateTime.now()),
-    Transaction(
-        id: 't2', title: 'Livro Clean Code', value: 70.0, date: DateTime.now())
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,64 +31,7 @@ class HomePage extends StatelessWidget {
                 child: Text('Gráfico'),
               ),
             ),
-            Column(
-                children: _transactions
-                    .map((tr) => Card(
-                            child: Row(
-                          children: [
-                            Container(
-                              margin: EdgeInsets.symmetric(
-                                  horizontal: 15, vertical: 10),
-                              decoration: BoxDecoration(
-                                border:
-                                    Border.all(color: Colors.purple, width: 2),
-                              ),
-                              padding: EdgeInsets.all(10),
-                              child: Text(
-                                'R\$ ${tr.value.toStringAsFixed(2)}',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20,
-                                    color: Colors.purple[400]),
-                              ),
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  tr.title,
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16),
-                                ),
-                                Text(
-                                  DateFormat('d MMM yy').format(tr.date),
-                                  style: TextStyle(color: Colors.grey),
-                                ),
-                              ],
-                            )
-                          ],
-                        )))
-                    .toList()),
-            Card(
-              elevation: 5,
-              child: Padding(
-                padding: EdgeInsets.all(8),
-                child: Column(
-                  children: [
-                    TextField(decoration: InputDecoration(labelText: 'Título')),
-                    TextField(
-                        decoration: InputDecoration(labelText: 'Valor (R\$)')),
-                    TextButton(
-                        style: TextButton.styleFrom(primary: Colors.purple),
-                        onPressed: () {},
-                        child: Text('Nova Transação',
-                            style: TextStyle(fontSize: 16)))
-                  ],
-                ),
-              ),
-            )
+            TransactionUser()
           ]),
     );
   }
