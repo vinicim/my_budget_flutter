@@ -20,6 +20,14 @@ class _TransactionUserState extends State<TransactionUser> {
         value: 320.5,
         date: DateTime.now()),
     Transaction(
+        id: 't2', title: 'Livro Clean Code', value: 70.0, date: DateTime.now()),
+    Transaction(
+        id: 't2', title: 'Livro Clean Code', value: 70.0, date: DateTime.now()),
+    Transaction(
+        id: 't2', title: 'Livro Clean Code', value: 70.0, date: DateTime.now()),
+    Transaction(
+        id: 't2', title: 'Livro Clean Code', value: 70.0, date: DateTime.now()),
+    Transaction(
         id: 't2', title: 'Livro Clean Code', value: 70.0, date: DateTime.now())
   ];
 

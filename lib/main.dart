@@ -19,20 +19,21 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Orçamento Pessoal')),
-      body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Container(
-              width: double.infinity,
-              child: Card(
-                color: Colors.blue,
-                elevation: 5,
-                child: Text('Gráfico'),
-              ),
-            ),
-            TransactionUser()
-          ]),
-    );
+        appBar: AppBar(title: Text('Orçamento Pessoal')),
+        body: SingleChildScrollView(
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Container(
+                  width: double.infinity,
+                  child: Card(
+                    color: Colors.blue,
+                    elevation: 5,
+                    child: Text('Gráfico'),
+                  ),
+                ),
+                TransactionUser()
+              ]),
+        ));
   }
 }
